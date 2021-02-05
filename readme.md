@@ -27,10 +27,10 @@
  display all book from db has been implemented.
  
  #### new_book_entry.html
- * This is file that contains form to enter new book.
+ * This is file that contains form to enter new book in views folder. 
  
  #### show_message.html
- * This file contains code to display books from db.
+ * This file contains code to display books from db  which is in views folder.
  
  > Ignore db.js and index.js file. 
  
