@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Title</title></head>
+<script type="text/javascript">
+
+    function page_load() {
+        document.getElementById('book_name').value="";
+        document.getElementById('author_name').value="";
+    }
+
+    function validate_bookname() {
+    var book_name = document.getElementById('book_name').value;
+
+    if (book_name.length < 4) {
+        document.getElementById('book_name_error_p').innerHTML = "please enter first name longer than 4 char";
+    } else {
+        document.getElementById('book_name_error_p').innerHTML = "";
+        //alert(book_name);
+    }
+}
+function validate_authorname() {
+    var author_name = document.getElementById('author_name').value;
+    if (author_name.length < 4) {
+        document.getElementById('author_name_error_p').innerHTML = "please enter author name longer than 4 char";
+    } else {
+        document.getElementById('author_name_error_p').innerHTML = "";
+    }
+}
+
+
+
+</script>
+<style>
+    #div_title{
+        background-color: darkblue;
+        color: aliceblue;
+        height: 50px;
+        font-family: "Cooper Black";
+        font-size: larger;
+
+    }
+   body{
+       background-color: lightgoldenrodyellow;
+   }
+    #div_form{
+        height: 100px;
+        margin-top: 20px;
+    }
+    #book_name, #author_name{
+        font-family: "Arial Narrow";
+        background-color: lightcyan;
+        color: green;
+    }
+   #author_name_error_p,#book_name_error_p{
+        color: red;
+    }
+</style>
+
+<body onload="page_load()">
+<div id="div_title">
+    <h3> Book Dictonary</h3>
+
+</div>
+
+<div id="div_main">
+
+    <div class="row" id="div_form">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+            <form action="/api/v1/addnewbook" , method="POST" >
+                <label> Book Name : </label>
+                <input type="text" name="name" id="book_name" required onkeyup="validate_bookname()">
+                <p id="book_name_error_p"></p><br><br>
+                <label> Author Name : </label>
+                <input type="text" name="author" id="author_name" required onkeyup="validate_authorname()">
+                <p id="author_name_error_p"></p>
+                <br><br>
+                <input type="submit">
+            </form>
+
+
+        </div>
+        <div><p id="result"></p></p> </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

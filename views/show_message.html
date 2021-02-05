@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Bootstrap Example</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+
+
+<script>
+
+
+    function view_data() {
+
+        var data1;
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:3000/api/v1/showallbooks",
+            success: function (result) {
+                console.log(result);
+                $('#name').empty();
+                $('#author').empty();
+                for (var i in result) {
+                    var book = result[i].name;
+
+                    var out_book = '<table>';
+                    out_book += '<tr><td>' + book + '</td>   </tr> ';
+                    out_book += '<table>';
+                    $('#name').append(out_book);
+
+                    /*$('#name').append(book);
+                     $('#author').html(author);*/
+
+                }
+                for (var i in result) {
+
+                    var author = result[i].author;
+                    var out_book = '<table>';
+                    out_book += '<tr> <td>' + author + '</td> </tr> ';
+                    out_book += '<table>';
+                    $('#author').append(out_book);
+
+                    /*$('#name').append(book);
+                     $('#author').html(author);*/
+
+                }
+
+            }
+        });
+    }
+
+</script>
+<style>
+#div_title{
+    background-color: antiquewhite;
+    color: darkgreen;
+    height: 50px;
+}
+    h1{
+        margin-left: 350px;
+        font-family: "Arial Rounded MT Bold";
+    }
+
+#div_buttons{
+
+    background-color: coral;
+    height: 60px;
+    align-content: center;
+}
+
+    #div_table_title{
+        background-color: cornsilk;
+        font-family: "Bodoni MT";
+        font-size: large;
+    }
+#div_table_data{
+    background-color: cornsilk;
+    font-size: large;
+    font-family: "Bodoni MT";
+    height: 300px;
+}
+.col{
+    align-content: center;
+}
+
+    body{
+        background-color: cornsilk;
+    }
+    #div_details{
+        background-color: brown;
+        font-family:" Cambria" ;
+        color: burlywood;
+    }
+    #div_table_title{
+        background-color: bisque;
+        color: midnightblue;
+    }
+</style>
+<body>
+
+<div>
+    <div id="div_title">
+
+        <h1> BOOK DICTIONARY </h1>
+    </div>
+
+    <div class="row" id="div_buttons" >
+        <div class="col" class="col-sm-2">  </div>
+        <div class="col" class="col-sm-4">
+            <input type="button" value="View Books"  name="btn_view_books" onclick="view_data()">
+        </div>
+        <div class="col" class="col-sm-4">
+            <a href="http://localhost:3000/api/v1/newbook" >
+            <input type="button" value="Add New Book"> </a>
+        </div>
+            <div class="col" class="col-sm-2">  </div>
+
+    </div>
+
+    <div class="row" id="div_table_title">
+        <div class="col" class="col-sm-2">  </div>
+        <div class="col" class="col-sm-4"> Book Name </div>
+        <div class="col" class="col-sm-4"> Author Name</div>
+        <div class="col" class="col-sm-2">  </div>
+
+    </div>
+    <div class="row" id="div_table_data">
+        <div class="col" class="col-sm-2">  </div>
+        <div class="col"  class="col-sm-4" id="name">  </div>
+        <div class="col"  class="col-sm-4" id="author"> </div>
+        <div class="col" class="col-sm-2">  <a href="http://localhost:3000/api/v1/removebook" >
+            <span class="glyphicon glyphicon-pencil"></span> </a> </div>
+
+    </div>
+    <div id="div_details">
+        <marquee> Book House, #21 3rd cross, Bannimantap, Mysore-21 </marquee>
+
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>
